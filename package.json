@@ -1,6 +1,6 @@
 {
   "name": "@gramex/cartogram",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A layered map visual that renders choropleths and cartograms from TopoJSON files",
   "module": "cartogram.js",
   "browser": "cartogram.min.js",
