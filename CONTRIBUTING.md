@@ -1,0 +1,16 @@
+# Setup
+
+To run this project locally:
+
+- Clone this repo, and run `npm install` to install dependencies
+- Run `npm run watch` to start auto-compiling [`index.ts`](index.ts)
+- Open [`index.html`](index.html) using a HTTP server (e.g. `python -m http.server`)
+- Edit [`index.ts`](index.ts) to make changes
+
+# Release
+
+```shell
+npm version minor
+npm run build
+npm publish
+```

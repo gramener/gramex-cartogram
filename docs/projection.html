@@ -1,0 +1,12 @@
+<svg id="map" width="600" height="400" style="overflow:visible"></svg>
+
+<script type="module">
+  import { cartogram } from "../cartogram.js";
+  import { geoEqualEarth } from "https://cdn.jsdelivr.net/npm/d3-geo@3/+esm";
+
+  const map = await fetch("japan.json").then((r) => r.json());
+  cartogram("#map", {
+    projection: geoEqualEarth().center([150, 32]).scale(400),
+    layers: [{ type: "choropleth", data: map }],
+  });
+</script>

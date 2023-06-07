@@ -1,0 +1,28 @@
+<svg id="map" width="600" height="400"></svg>
+
+<script type="module">
+  import { cartogram } from "../cartogram.js";
+  import { scaleLinear } from "https://cdn.skypack.dev/d3-scale@4";
+
+  const map = await fetch("japan.json").then((r) => r.json());
+  const color = scaleLinear().domain([5, 12, 15]).range(["red", "yellow", "green"]);
+  cartogram("#map", {
+    layers: [
+      { type: "choropleth", data: map },
+      {
+        type: "cartogram",
+        data: map,
+        //
+        // NOTE: This map has a property called ".nam". Your map may differ.
+        update: (join) =>
+          join
+            // Set the radius of each prefecture to the length of its name.
+            .attr("r", (d) => d.properties.nam.length)
+            // Longer prefecture names are in green. Shorter ones are in red.
+            .attr("fill", (d) => color(d.properties.nam.length))
+            .attr("stroke", "white")
+            .attr("fill-opacity", 0.7),
+      },
+    ],
+  });
+</script>

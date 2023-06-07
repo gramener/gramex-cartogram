@@ -1,0 +1,29 @@
+<svg id="map" width="600" height="400"></svg>
+
+<script type="module">
+  import { cartogram } from "../cartogram.js";
+
+  const map = await fetch("japan.json").then((r) => r.json());
+  const selection = [
+    "Aichi Ken",
+    "Tochigi Ken",
+    "Yamanashi Ken",
+    "Shiga Ken",
+  ];
+  cartogram("#map", {
+    layers: [
+      {
+        type: "choropleth",
+        data: map,
+      },
+      {
+        type: "choropleth",
+        data: map,
+        filter: ({ properties }) => selection.indexOf(properties.nam) >= 0,
+        update: (join) => join.attr("fill", "red"),
+        // Fit the map to the selected prefectures.
+        fitSize: true
+      },
+    ],
+  });
+</script>
