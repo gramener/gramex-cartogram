@@ -6,7 +6,7 @@ A layered map visual that renders choropleths and cartograms from TopoJSON files
 
 Given this [TopoJSON file of Japan](docs/japan.json), you can render a map like this:
 
-[![Japan map](docs/japan.png)](docs/japan.html ":include")
+[![Japan map](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/japan.png)](docs/japan.html ":include")
 
 [Here is the source code for the map above](docs/japan.html ":include :type=code")
 
@@ -36,7 +36,7 @@ Use via CDN as an ES Module:
 
 ```html
 <script type="module">
-  import { cartogram } from "https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/+esm";
+  import { cartogram } from "https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.js";
 </script>
 ```
 
@@ -67,7 +67,7 @@ The `cartogram()` function accepts the following parameters:
 
 Add an `update` function to color features based on data.
 
-[![Map with colors](docs/color.png)](docs/color.html ":include")
+[![Map with colors](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/color.png)](docs/color.html ":include")
 
 [Source code](docs/color.html ":include :type=code")
 
@@ -75,7 +75,7 @@ Add an `update` function to color features based on data.
 
 Add an `update` function to set any attribute on features based on data.
 
-[![Map with resized circles](docs/features.png)](docs/features.html ":include")
+[![Map with resized circles](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/features.png)](docs/features.html ":include")
 
 [Source code](docs/features.html ":include :type=code")
 
@@ -89,7 +89,7 @@ The `filter` function is called with each feature. Features are objects with the
 
 This example draws 2 layers. The second layer filters selected features and colors it in red.
 
-[![Map with filters](docs/filter.png)](docs/filter.html ":include")
+[![Map with filters](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/filter.png)](docs/filter.html ":include")
 
 [Source code](docs/filter.html ":include :type=code")
 
@@ -108,7 +108,7 @@ This example shows how to use [Bootstrap tooltips](https://getbootstrap.com/docs
 
 This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-geo) as `projection`.
 
-[![Map with projection](docs/projection.png)](docs/projection.html ":include")
+[![Map with projection](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/projection.png)](docs/projection.html ":include")
 
 [Source code](docs/projection.html ":include :type=code")
 
@@ -116,7 +116,7 @@ This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-ge
 
 `cartogram()` works on any `<svg>` or `<g>` element, and respects all transformations.
 
-[![Map with transformations](docs/transform.png)](docs/transform.html ":include")
+[![Map with transformations](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/transform.png)](docs/transform.html ":include")
 
 [Source code](docs/transform.html ":include :type=code")
 
@@ -124,6 +124,6 @@ This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-ge
 
 To zoom the map to fit a layer, add `fitSize: true` to the layer.
 
-[![Map with transformations](docs/fitsize.png)](docs/fitsize.html ":include")
+[![Map with transformations](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/fitsize.png)](docs/fitsize.html ":include")
 
 [Source code](docs/fitsize.html ":include :type=code")

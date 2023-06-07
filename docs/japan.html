@@ -1,6 +1,7 @@
 <svg id="map" width="600" height="400"></svg>
 
 <script type="module">
+  // import { cartogram } from "https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.js";
   import { cartogram } from "../cartogram.js";
 
   const map = await fetch("japan.json").then((r) => r.json())
