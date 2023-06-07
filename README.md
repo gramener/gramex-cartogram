@@ -53,7 +53,7 @@ The `cartogram()` function accepts the following parameters:
 - `element`: the SVG element to render the map in. This may be an `<svg>` or a `<g>` element.
 - `options`: an object with the following keys
   - `layers`: an array of layers. Each layer draws a map. It's an object with these keys:
-    - `type`: `"choropleth"` or `"cartogram"`
+    - `type`: `"choropleth"`, `"cartogram"` or `"centroid"`
     - `data`: a [TopoJSON map](https://github.com/topojson/topojson) object
     - `id`: optional ID for the map layer;
     - `filter`: optional function to filter which features are drawn, e.g. `(d) => d.properties.population > 1000000`
@@ -78,6 +78,14 @@ Add an `update` function to set any attribute on features based on data.
 [![Map with resized circles](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/features.png)](docs/features.html ":include")
 
 [Source code](docs/features.html ":include :type=code")
+
+## Add shapes at centroid
+
+The `"centroid"` layer type lets you add any shape to the map. This example adds a square at the centroid of each feature.
+
+[![Map with squares at centroid](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/centroid.png)](docs/centroid.html ":include")
+
+[Source code](docs/centroid.html ":include :type=code")
 
 ## Filter features
 

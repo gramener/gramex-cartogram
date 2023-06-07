@@ -1,0 +1,25 @@
+<svg id="map" width="600" height="400"></svg>
+
+<script type="module">
+  // import { cartogram } from "https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.js";
+  import { cartogram } from "../cartogram.js";
+
+  const map = await fetch("japan.json").then((r) => r.json());
+  cartogram("#map", {
+    layers: [
+      { type: "choropleth", data: map },
+      {
+        type: "centroid",
+        data: map,
+        update: (join) =>
+          join
+            .selectAll("path")
+            .data((d) => [d])
+            .join("path")
+            .attr("d", "M5,5 v-10 h-10 v10 z")
+            .attr("fill", "lime")
+            .attr("stroke", "red"),
+      },
+    ],
+  });
+</script>

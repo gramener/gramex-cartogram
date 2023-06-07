@@ -19,7 +19,7 @@ export function cartogram(
   projection = projection || geoMercator();
 
   // Create a <g id="${layer.id}"> element for each layer. If ID is missing, use `layer-${index}`.
-  const layerJoin = el
+  const layerSelection = el
     .selectAll("g.layer")
     .data(layers)
     .join("g")
@@ -44,8 +44,8 @@ export function cartogram(
   const path = geoPath();
   if (projection) path.projection(projection);
 
-  const features: any[] = [];
-  layerJoin.each(function (layer: CartogramLayer) {
+  const features: FeatureSelection[] = [];
+  layerSelection.each(function (layer: CartogramLayer) {
     const plugin = plugins[layer.type];
     if (!plugin) return;
 
@@ -59,7 +59,7 @@ export function cartogram(
     features.push(join);
   });
   return {
-    layers: layerJoin,
+    layers: layerSelection,
     features,
   };
 }
@@ -67,19 +67,25 @@ export function cartogram(
 const plugins = {
   choropleth: {
     tag: "path",
-    update: (join, { path }) => join.attr("d", path),
+    update: (join: FeatureSelection, { path }) => join.attr("d", path),
   },
   cartogram: {
     tag: "circle",
-    update: (join, { path }) =>
-      join.each(function (d) {
+    update: (join: FeatureSelection, { path }) =>
+      join.each(function (d: Feature) {
         const [x, y] = path.centroid(d);
         if (x && y) select(this).attr("cx", x).attr("cy", y).attr("r", 5).attr("stroke", "#fff");
       }),
   },
+  centroid: {
+    tag: "g",
+    update: (join: FeatureSelection, { path }) =>
+      join.each(function (d: Feature) {
+        const [x, y] = path.centroid(d);
+        if (x && y) select(this).attr("transform", `translate(${x},${y})`);
+      }),
+  },
 };
-
-// TODO: Add hook to set the attributes
 
 export interface CartogramOptions {
   width?: number;
@@ -89,24 +95,20 @@ export interface CartogramOptions {
 }
 
 export interface CartogramLayer {
-  type: string;
+  type: "choropleth" | "cartogram" | "centroid";
   data: Topology;
   id?: string;
-  filter?: (feature: GeoJSON.Feature<GeoJSON.Geometry, GeoJSON.GeoJsonProperties>) => boolean;
-  update?: (
-    join: Selection<
-      SVGElement,
-      GeoJSON.Feature<GeoJSON.Geometry, GeoJSON.GeoJsonProperties>,
-      BaseType | SVGElement,
-      unknown
-    >
-  ) => void;
+  filter?: (feature: Feature) => boolean;
+  update?: (join: FeatureSelection) => void;
   fitSize?: boolean;
-  features?: GeoJSON.Feature[];
+  features?: Feature[];
 }
 
 export interface Cartogram {
-  // TODO: Be specific about the type of the layers
-  layers?: any;
-  features?: any[];
+  layers: LayerSelection;
+  features: FeatureSelection[];
 }
+
+type Feature = GeoJSON.Feature<GeoJSON.Geometry, GeoJSON.GeoJsonProperties>;
+type LayerSelection = Selection<BaseType | SVGGElement, CartogramLayer, SVGElement, unknown>;
+type FeatureSelection = Selection<BaseType | SVGGElement, Feature, BaseType | SVGGElement, unknown>;

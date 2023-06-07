@@ -11,6 +11,6 @@ To run this project locally:
 
 ```shell
 npm version minor
-npm run build
 npm publish
+git push --tags
 ```
