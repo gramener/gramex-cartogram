@@ -58,7 +58,7 @@ The `cartogram()` function accepts the following parameters:
     - `id`: optional ID for the map layer;
     - `filter`: optional function to filter which features are drawn, e.g. `(d) => d.properties.population > 1000000`
     - `update`: optional function to update the map features, e.g. `(join) => join.attr('fill', d => d.color)`
-    - `fitSize`: optional boolean. If true, the projection automatically fits to the boundary of this layer
+    - `fit`: optional boolean. If true, the projection automatically fits to the boundary of this layer
   - `projection`: Any [d3-geo projection](https://github.com/d3/d3-geo)
   - `width`: optional width of the map. Defaults to the element's size (or the nearest SVG parent)
   - `height`: optional width of the map. Defaults to the element's size (or the nearest SVG parent)
@@ -78,6 +78,14 @@ Add an `update` function to set any attribute on features based on data.
 [![Map with resized circles](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/features.png)](docs/features.html ":include")
 
 [Source code](docs/features.html ":include :type=code")
+
+## Animate features
+
+Use `.transition()` on in `update` to animate the map.
+
+[![Map with animation](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/animate.gif)](docs/animate.html ":include")
+
+[Source code](docs/animate.html ":include :type=code")
 
 ## Add shapes at centroid
 
@@ -100,6 +108,22 @@ This example draws 2 layers. The second layer filters selected features and colo
 [![Map with filters](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/filter.png)](docs/filter.html ":include")
 
 [Source code](docs/filter.html ":include :type=code")
+
+## Zoom to fit
+
+By default, cartogram zooms to fit all layers. To zoom to specific layers, add `fit: true` to the layers.
+
+[![Map with transformations](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/fit.png)](docs/fit.html ":include")
+
+[Source code](docs/fit.html ":include :type=code")
+
+## Multiple maps
+
+You can add different maps in each layer. In this map, we have one layer for France (red) and one for Germany (green).
+
+[![Multiple maps](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/multiple.png)](docs/multiple.html ":include")
+
+[Source code](docs/multiple.html ":include :type=code")
 
 ## Add tooltips
 
@@ -127,11 +151,3 @@ This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-ge
 [![Map with transformations](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/transform.png)](docs/transform.html ":include")
 
 [Source code](docs/transform.html ":include :type=code")
-
-## Animate
-
-Use `.transition()` on in `update` to animate the map.
-
-[![Map with animation](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/animate.gif)](docs/animate.html ":include")
-
-[Source code](docs/animate.html ":include :type=code")

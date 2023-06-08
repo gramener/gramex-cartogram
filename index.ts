@@ -37,10 +37,17 @@ export function cartogram(
         featureCollection.features = featureCollection.features.filter(layer.filter);
       // Store converted TopoJSON features in each layer as .features
       layer.features = featureCollection.features;
-      // If projection is not defined, fit to the first layer
-      if (layer.fitSize || !projection?.center?.()?.[0])
-        projection = (projection as GeoProjection).fitSize(size, featureCollection);
     });
+
+  // If projection is not defined, fit to all layers with fit=true, or all layers.
+  if (!projection?.center?.()?.[0]) {
+    let features = layers
+      .filter((d) => d.fit)
+      .map((d) => d.features || [])
+      .flat();
+    if (features.length === 0) features = layers.map((d) => d.features || []).flat();
+    projection = projection.fitSize(size, { type: "FeatureCollection", features });
+  }
 
   const path = geoPath();
   if (projection) path.projection(projection);
@@ -96,7 +103,7 @@ export interface CartogramLayer {
   id?: string;
   filter?: (feature: Feature) => boolean;
   update?: (join: FeatureSelection) => void;
-  fitSize?: boolean;
+  fit?: boolean;
   features?: Feature[];
 }
 
