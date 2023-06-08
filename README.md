@@ -128,10 +128,10 @@ This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-ge
 
 [Source code](docs/transform.html ":include :type=code")
 
-## Fit size
+## Animate
 
-To zoom the map to fit a layer, add `fitSize: true` to the layer.
+Use `.transition()` on in `update` to animate the map.
 
-[![Map with transformations](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/fitsize.png)](docs/fitsize.html ":include")
+[![Map with animation](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/animate.gif)](docs/animate.html ":include")
 
-[Source code](docs/fitsize.html ":include :type=code")
+[Source code](docs/animate.html ":include :type=code")

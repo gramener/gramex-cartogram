@@ -2,6 +2,7 @@ import * as topojson from "topojson-client";
 import { Topology } from "topojson-specification";
 import { select, BaseType, Selection } from "d3-selection";
 import { geoPath, geoMercator, GeoProjection } from "d3-geo";
+import "d3-transition";
 
 export function cartogram(
   element: SVGElement,
@@ -49,12 +50,11 @@ export function cartogram(
     const plugin = plugins[layer.type];
     if (!plugin) return;
 
-    const join = select(this)
-      .selectAll(plugin.tag)
-      .data(layer.features || [])
-      .join(plugin.tag)
-      .call((join) => plugin.update(join, { path }))
-      .classed("feature", true);
+    const selection = select(this)
+      .selectAll(".feature")
+      .data(layer.features || []);
+    // TODO: Allow layer.enter() and layer.exit()
+    const join = plugin(selection, { path }).classed("feature", true);
     if (layer.update) join.call(layer.update);
     features.push(join);
   });
@@ -65,27 +65,23 @@ export function cartogram(
 }
 
 const plugins = {
-  choropleth: {
-    tag: "path",
-    update: (join: FeatureSelection, { path }) => join.attr("d", path),
-  },
-  cartogram: {
-    tag: "circle",
-    update: (join: FeatureSelection, { path }) =>
-      join.each(function (d: Feature) {
-        const [x, y] = path.centroid(d);
-        if (x && y) select(this).attr("cx", x).attr("cy", y).attr("r", 5).attr("stroke", "#fff");
-      }),
-  },
-  centroid: {
-    tag: "g",
-    update: (join: FeatureSelection, { path }) =>
-      join.each(function (d: Feature) {
-        const [x, y] = path.centroid(d);
-        if (x && y) select(this).attr("transform", `translate(${x},${y})`);
-      }),
-  },
+  choropleth: (selection: FeatureSelection, { path }) => selection.join("path").attr("d", path),
+  cartogram: (selection: FeatureSelection, { path }) =>
+    selection.join(
+      (enter) =>
+        enter.append("circle").call(moveToCentroid, { path }).attr("r", 5).attr("stroke", "#fff"),
+      (update) => update.call(moveToCentroid, { path })
+    ),
+  centroid: (selection: FeatureSelection, { path }) =>
+    selection.join("g").call(moveToCentroid, { path }),
 };
+
+function moveToCentroid(selection: FeatureSelection, { path }) {
+  selection.each(function (d: Feature) {
+    const [x, y] = path.centroid(d);
+    if (x && y) select(this).attr("transform", `translate(${x},${y})`);
+  });
+}
 
 export interface CartogramOptions {
   width?: number;
@@ -110,5 +106,5 @@ export interface Cartogram {
 }
 
 type Feature = GeoJSON.Feature<GeoJSON.Geometry, GeoJSON.GeoJsonProperties>;
-type LayerSelection = Selection<BaseType | SVGGElement, CartogramLayer, SVGElement, unknown>;
-type FeatureSelection = Selection<BaseType | SVGGElement, Feature, BaseType | SVGGElement, unknown>;
+type LayerSelection = Selection<BaseType | SVGElement, CartogramLayer, SVGElement, unknown>;
+type FeatureSelection = Selection<any | SVGCircleElement, Feature, BaseType | SVGElement, unknown>;

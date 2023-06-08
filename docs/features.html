@@ -13,11 +13,10 @@
       {
         type: "cartogram",
         data: map,
-        //
-        // NOTE: This map has a property called ".nam". Your map may differ.
         update: (join) =>
           join
             // Set the radius of each prefecture to the length of its name.
+            // NOTE: This map has a property called ".nam". Your map may differ.
             .attr("r", (d) => d.properties.nam.length)
             // Longer prefecture names are in green. Shorter ones are in red.
             .attr("fill", (d) => color(d.properties.nam.length))

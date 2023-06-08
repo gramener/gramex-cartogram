@@ -1,0 +1,29 @@
+<svg id="map" width="600" height="400"></svg>
+
+<script type="module">
+  // import { cartogram } from "https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.js";
+  import { cartogram } from "../cartogram.js";
+  import { scaleLinear } from "https://cdn.skypack.dev/d3-scale@4";
+
+  const map = await fetch("japan.json").then((r) => r.json());
+  const color = scaleLinear().domain([5, 12, 15]).range(["red", "yellow", "green"]);
+  setInterval(() => {
+    cartogram("#map", {
+      layers: [
+        { type: "choropleth", data: map },
+        {
+          type: "cartogram",
+          data: map,
+          update: (join) =>
+            join
+              // Smoothly transition the radius and color randomly
+              .transition()
+              .attr("r", () => Math.random() * 10 + 5)
+              .attr("fill", () => color(Math.random() * 10 + 5))
+              .attr("stroke", "white")
+              .attr("fill-opacity", 0.7),
+        },
+      ],
+    });
+  }, 1000);
+</script>
