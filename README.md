@@ -30,6 +30,7 @@ Use locally as a script:
 
 ```html
 <script src="./node_modules/@gramex/cartogram/cartogram.min.js"></script>
+<script>gramex.cartogram(...)</script>
 ```
 
 Use via CDN as an ES Module:
@@ -44,6 +45,7 @@ Use via CDN as a script:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.min.js"></script>
+<script>gramex.cartogram(...)</script>
 ```
 
 ## API
@@ -151,3 +153,22 @@ This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-ge
 [![Map with transformations](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/transform.png)](docs/transform.html ":include")
 
 [Source code](docs/transform.html ":include :type=code")
+
+## Documentation
+
+- [**Home page**](https://gramener.com/gramex-cartogram/)
+- [**Source**](https://code.gramener.com/reusablecharts/gramex-cartogram.git)
+
+## Release notes
+
+- 1.0.1: 7 Jun 2023. Initial release
+- 1.1.0: 8 Jun 2023. Add `type="centroid"`. Support transitions. `fit` supports multiple layers.
+- 2.0.0: 16 Jun 2023. Build as `gramex.cartogram()` instead of `cartogram.cartogram()`.
+
+## Authors
+
+Anand S <s.anand@gramener.com>
+
+## License
+
+ISC license

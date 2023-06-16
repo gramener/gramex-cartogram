@@ -6,7 +6,7 @@
   "browser": "cartogram.min.js",
   "scripts": {
     "watch": "esbuild index.ts --format=esm --bundle --minify --allow-overwrite --sourcemap --outfile=cartogram.js --watch",
-    "build-browser": "esbuild index.ts --format=iife --global-name=cartogram --bundle --sourcemap --minify --outfile=cartogram.min.js",
+    "build-browser": "esbuild index.ts --format=iife --global-name=gramex --bundle --sourcemap --minify --outfile=cartogram.min.js",
     "build-esm": "esbuild index.ts --format=esm --bundle --minify --allow-overwrite --sourcemap --outfile=cartogram.js",
     "build": "npm run build-browser && npm run build-esm",
     "prepublish": "npm run build"
