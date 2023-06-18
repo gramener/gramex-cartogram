@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://code.gramener.com/reuse/gramex-cartogram.git"
+    "url": "git+https://code.gramener.com/reuse/gramex-cartogram"
   },
   "keywords": [
     "gramex",
@@ -26,7 +26,7 @@
   ],
   "author": "S Anand <root.node@gmail.com>",
   "contributors": [
-    "Anand Jungade@gramener.com <anand.jungade@gramener.com"
+    "Anand Jungade@gramener.com <anand.jungade@gramener.com>"
   ],
   "license": "ISC",
   "bugs": {
@@ -36,7 +36,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "homepage": "https://code.gramener.com/reuse/gramex-cartogram/",
+  "homepage": "https://gramener.com/gramex-cartogram/",
   "prettier": {
     "printWidth": 100
   },

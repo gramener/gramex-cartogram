@@ -30,7 +30,9 @@ Use locally as a script:
 
 ```html
 <script src="./node_modules/@gramex/cartogram/cartogram.min.js"></script>
-<script>gramex.cartogram(...)</script>
+<script>
+  gramex.cartogram(...)
+</script>
 ```
 
 Use via CDN as an ES Module:
@@ -45,7 +47,9 @@ Use via CDN as a script:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.min.js"></script>
-<script>gramex.cartogram(...)</script>
+<script>
+  gramex.cartogram(...)
+</script>
 ```
 
 ## API
