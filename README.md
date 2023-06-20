@@ -95,7 +95,7 @@ Use `.transition()` on in `update` to animate the map.
 
 ## Add shapes at centroid
 
-The `"centroid"` layer type lets you add any shape to the map. This example adds a square at the centroid of each feature.
+The `"centroid"` layer type lets you add any shape to the map. This example adds a square and a label at the centroid of each feature.
 
 [![Map with squares at centroid](https://code.gramener.com/reuse/gramex-cartogram/-/raw/main/docs/centroid.png)](docs/centroid.html ":include")
 
