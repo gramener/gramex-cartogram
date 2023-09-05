@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://code.gramener.com/reuse/gramex-cartogram"
+    "url": "git+https://code.gramener.com/cto/gramex-cartogram"
   },
   "keywords": [
     "gramex",
@@ -28,9 +28,9 @@
   "contributors": [
     "Anand Jungade@gramener.com <anand.jungade@gramener.com>"
   ],
-  "license": "ISC",
+  "license": "AGPL-3.0-only",
   "bugs": {
-    "url": "https://code.gramener.com/reuse/gramex-cartogram/-/issues"
+    "url": "https://code.gramener.com/cto/gramex-cartogram/-/issues"
   },
   "publishConfig": {
     "access": "public",
