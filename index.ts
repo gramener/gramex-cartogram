@@ -6,7 +6,7 @@ import "d3-transition";
 
 export function cartogram(
   element: SVGElement,
-  { width, height, layers = [], projection }: CartogramOptions
+  { width, height, layers = [], projection }: CartogramOptions,
 ): Cartogram {
   const el = select(element);
 
@@ -30,7 +30,7 @@ export function cartogram(
       const featureCollectionName = Object.keys(layer.data.objects)[0];
       const featureCollection = topojson.feature(
         layer.data,
-        featureCollectionName
+        featureCollectionName,
       ) as unknown as GeoJSON.FeatureCollection;
       // Filter if required
       if (layer.filter)
@@ -77,7 +77,7 @@ const plugins = {
     selection.join(
       (enter) =>
         enter.append("circle").call(moveToCentroid, { path }).attr("r", 5).attr("stroke", "#fff"),
-      (update) => update.call(moveToCentroid, { path })
+      (update) => update.call(moveToCentroid, { path }),
     ),
   centroid: (selection: FeatureSelection, { path }) =>
     selection.join("g").call(moveToCentroid, { path }),
