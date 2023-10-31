@@ -165,9 +165,10 @@ This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-ge
 
 ## Release notes
 
-- 1.0.1: 7 Jun 2023. Initial release
-- 1.1.0: 8 Jun 2023. Add `type="centroid"`. Support transitions. `fit` supports multiple layers.
+- 2.0.1: 31 Oct 2023. Re-license from AGPL 3.0 to MIT.
 - 2.0.0: 16 Jun 2023. Build as `gramex.cartogram()` instead of `cartogram.cartogram()`.
+- 1.1.0: 8 Jun 2023. Add `type="centroid"`. Support transitions. `fit` supports multiple layers.
+- 1.0.1: 7 Jun 2023. Initial release
 
 ## Authors
 
@@ -175,4 +176,4 @@ Anand S <s.anand@gramener.com>
 
 ## License
 
-[AGPL-3.0-only](https://spdx.org/licenses/AGPL-3.0-only.html)
+[MIT](https://spdx.org/licenses/MIT.html)

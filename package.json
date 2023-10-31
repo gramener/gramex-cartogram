@@ -9,9 +9,10 @@
     "build-browser": "esbuild index.ts --format=iife --global-name=gramex --bundle --sourcemap --minify --outfile=cartogram.min.js",
     "build-esm": "esbuild index.ts --format=esm --bundle --minify --allow-overwrite --sourcemap --outfile=cartogram.js",
     "build": "npm run build-browser && npm run build-esm",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "files": [
+    "README.md",
     "cartogram.*"
   ],
   "repository": {
@@ -28,7 +29,7 @@
   "contributors": [
     "Anand Jungade@gramener.com <anand.jungade@gramener.com>"
   ],
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "bugs": {
     "url": "https://code.gramener.com/cto/gramex-cartogram/-/issues"
   },
