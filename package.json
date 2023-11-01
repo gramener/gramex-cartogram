@@ -1,15 +1,16 @@
 {
   "name": "@gramex/cartogram",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A layered map visual that renders choropleths and cartograms from TopoJSON files",
   "module": "cartogram.js",
   "browser": "cartogram.min.js",
   "scripts": {
+    "lint": "prettier --write '**/*.{js,mjs,ts,md}' && eslint",
     "watch": "esbuild index.ts --format=esm --bundle --minify --allow-overwrite --sourcemap --outfile=cartogram.js --watch",
     "build-browser": "esbuild index.ts --format=iife --global-name=gramex --bundle --sourcemap --minify --outfile=cartogram.min.js",
     "build-esm": "esbuild index.ts --format=esm --bundle --minify --allow-overwrite --sourcemap --outfile=cartogram.js",
     "build": "npm run build-browser && npm run build-esm",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run lint && npm run build"
   },
   "files": [
     "README.md",
