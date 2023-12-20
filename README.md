@@ -1,4 +1,4 @@
-# gramex-cartogram
+# @gramex/cartogram
 
 A layered map visual that renders choropleths and cartograms from TopoJSON files.
 
