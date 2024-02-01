@@ -10,3 +10,6 @@ deploy:
     URL: gramex-cartogram
     VERSION: static
     SETUP: npm install && npm run build
+  environment:
+    name: production
+    url: https://gramener.com/gramex-cartogram/
