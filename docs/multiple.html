@@ -1,0 +1,15 @@
+<svg id="map" width="600" height="400"></svg>
+
+<script type="module">
+  // import { cartogram } from "https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.js";
+  import { cartogram } from "../cartogram.js";
+
+  const france = await fetch("france.json").then((r) => r.json());
+  const germany = await fetch("germany.json").then((r) => r.json());
+  cartogram("#map", {
+    layers: [
+      { type: "choropleth", data: france, update: (join) => join.attr("fill", "red") },
+      { type: "choropleth", data: germany, update: (join) => join.attr("fill", "green") },
+    ],
+  });
+</script>

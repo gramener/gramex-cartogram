@@ -1,0 +1,38 @@
+<svg id="map" width="600" height="400"></svg>
+
+<script type="module">
+  // import { cartogram } from "https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.js";
+  import { cartogram } from "../cartogram.js";
+
+  const map = await fetch("japan.json").then((r) => r.json());
+  const selection = [
+    "Saga Ken",
+    "Kumamoto Ken",
+    "Kagawa Ken",
+    "Aichi Ken",
+    "Tochigi Ken",
+    "Yamanashi Ken",
+    "Shiga Ken",
+    "Gunma Ken",
+    "Miyagi Ken",
+    "Shizuoka Ken",
+    "Ibaraki Ken",
+    "Okinawa Ken",
+  ];
+  cartogram("#map", {
+    layers: [
+      {
+        type: "choropleth",
+        data: map,
+      },
+      {
+        type: "choropleth",
+        data: map,
+        // Only show the selected prefectures.
+        // NOTE: This map has a property called ".nam". Your map may differ.
+        filter: ({ properties }) => selection.indexOf(properties.nam) >= 0,
+        update: (join) => join.attr("fill", "red"),
+      },
+    ],
+  });
+</script>

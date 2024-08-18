@@ -1,0 +1,31 @@
+<svg id="map" width="600" height="400"></svg>
+
+<script type="module">
+  // import { cartogram } from "https://cdn.jsdelivr.net/npm/@gramex/cartogram@1/cartogram.js";
+  import { cartogram } from "../cartogram.js";
+
+  const map = await fetch("japan.json").then((r) => r.json());
+  // This sample dataset indicates a color for some of Japan's prefectures
+  const data = {
+    "Aichi Ken": "red",
+    "Akita Ken": "green",
+    "Aomori Ken": "red",
+    "Chiba Ken": "green",
+    "Ehime Ken": "red",
+    "Fukui Ken": "green",
+    "Fukuoka Ken": "red",
+    "Fukushima Ken": "green",
+    // ...
+  };
+  cartogram("#map", {
+    layers: [
+      {
+        type: "choropleth",
+        data: map,
+        // Set each feature's "fill" attribute based on data.
+        // NOTE: This map has a property called ".nam". Your map may differ.
+        update: (join) => join.attr("fill", (d) => data[d.properties.nam]),
+      },
+    ],
+  });
+</script>

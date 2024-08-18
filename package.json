@@ -1,0 +1,52 @@
+{
+  "name": "@gramex/cartogram",
+  "version": "2.0.3",
+  "description": "A layered map visual that renders choropleths and cartograms from TopoJSON files",
+  "module": "cartogram.js",
+  "main": "cartogram.min.js",
+  "scripts": {
+    "watch": "esbuild index.ts --format=esm --bundle --minify --allow-overwrite --sourcemap --outfile=cartogram.js --watch",
+    "build-browser": "esbuild index.ts --format=iife --global-name=gramex --bundle --sourcemap --minify --outfile=cartogram.min.js",
+    "build-esm": "esbuild index.ts --format=esm --bundle --minify --allow-overwrite --sourcemap --outfile=cartogram.js",
+    "build": "npm run build-browser && npm run build-esm",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "README.md",
+    "cartogram.*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/gramener/gramex-cartogram"
+  },
+  "keywords": [
+    "gramex",
+    "cartogram",
+    "choropleth",
+    "map"
+  ],
+  "author": "S Anand <root.node@gmail.com>",
+  "contributors": [
+    "Anand Jungade@gramener.com <anand.jungade@gramener.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gramener/gramex-cartogram/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://gramener.github.io/gramex-cartogram/",
+  "devDependencies": {
+    "@types/d3-geo": "^3.0.3",
+    "@types/d3-selection": "^3.0.5",
+    "@types/d3-transition": "^3.0.3",
+    "@types/topojson-client": "^3.1.1",
+    "d3-geo": "^3.1.0",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
+    "esbuild": "^0.17.19",
+    "topojson-client": "^3.1.0"
+  }
+}
