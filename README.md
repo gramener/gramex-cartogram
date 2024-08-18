@@ -6,7 +6,7 @@ A layered map visual that renders choropleths and cartograms from TopoJSON files
 
 Given this [TopoJSON file of Japan](docs/japan.json), you can render a map like this:
 
-[![Japan map](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/japan.png)](docs/japan.html ":include")
+[![Japan map](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/japan.png)](docs/japan.html ":include")
 
 [Here is the source code for the map above](docs/japan.html ":include :type=code")
 
@@ -73,7 +73,7 @@ The `cartogram()` function accepts the following parameters:
 
 Add an `update` function to color features based on data.
 
-[![Map with colors](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/color.png)](docs/color.html ":include")
+[![Map with colors](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/color.png)](docs/color.html ":include")
 
 [Source code](docs/color.html ":include :type=code")
 
@@ -81,7 +81,7 @@ Add an `update` function to color features based on data.
 
 Add an `update` function to set any attribute on features based on data.
 
-[![Map with resized circles](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/features.png)](docs/features.html ":include")
+[![Map with resized circles](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/features.png)](docs/features.html ":include")
 
 [Source code](docs/features.html ":include :type=code")
 
@@ -89,7 +89,7 @@ Add an `update` function to set any attribute on features based on data.
 
 Use `.transition()` on in `update` to animate the map.
 
-[![Map with animation](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/animate.gif)](docs/animate.html ":include")
+[![Map with animation](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/animate.gif)](docs/animate.html ":include")
 
 [Source code](docs/animate.html ":include :type=code")
 
@@ -97,7 +97,7 @@ Use `.transition()` on in `update` to animate the map.
 
 The `"centroid"` layer type lets you add any shape to the map. This example adds a square and a label at the centroid of each feature.
 
-[![Map with squares at centroid](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/centroid.png)](docs/centroid.html ":include")
+[![Map with squares at centroid](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/centroid.png)](docs/centroid.html ":include")
 
 [Source code](docs/centroid.html ":include :type=code")
 
@@ -111,7 +111,7 @@ The `filter` function is called with each feature. Features are objects with the
 
 This example draws 2 layers. The second layer filters selected features and colors it in red.
 
-[![Map with filters](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/filter.png)](docs/filter.html ":include")
+[![Map with filters](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/filter.png)](docs/filter.html ":include")
 
 [Source code](docs/filter.html ":include :type=code")
 
@@ -119,7 +119,7 @@ This example draws 2 layers. The second layer filters selected features and colo
 
 By default, cartogram zooms to fit all layers. To zoom to specific layers, add `fit: true` to the layers.
 
-[![Map with transformations](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/fit.png)](docs/fit.html ":include")
+[![Map with transformations](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/fit.png)](docs/fit.html ":include")
 
 [Source code](docs/fit.html ":include :type=code")
 
@@ -127,7 +127,7 @@ By default, cartogram zooms to fit all layers. To zoom to specific layers, add `
 
 You can add different maps in each layer. In this map, we have one layer for France (red) and one for Germany (green).
 
-[![Multiple maps](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/multiple.png)](docs/multiple.html ":include")
+[![Multiple maps](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/multiple.png)](docs/multiple.html ":include")
 
 [Source code](docs/multiple.html ":include :type=code")
 
@@ -146,7 +146,7 @@ This example shows how to use [Bootstrap tooltips](https://getbootstrap.com/docs
 
 This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-geo) as `projection`.
 
-[![Map with projection](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/projection.png)](docs/projection.html ":include")
+[![Map with projection](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/projection.png)](docs/projection.html ":include")
 
 [Source code](docs/projection.html ":include :type=code")
 
@@ -154,14 +154,14 @@ This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-ge
 
 `cartogram()` works on any `<svg>` or `<g>` element, and respects all transformations.
 
-[![Map with transformations](https://code.gramener.com/cto/gramex-cartogram/-/raw/main/docs/transform.png)](docs/transform.html ":include")
+[![Map with transformations](https://raw.githubusercontent.com/gramener/gramex-cartogram/main/docs/transform.png)](docs/transform.html ":include")
 
 [Source code](docs/transform.html ":include :type=code")
 
 ## Documentation
 
-- [**Home page**](https://gramener.com/gramex-cartogram/)
-- [**Source**](https://code.gramener.com/cto/gramex-cartogram.git)
+- [**Home page**](https://github.gramener.io/gramex-cartogram/)
+- [**Source**](https://github.com/gramener/gramex-cartogram)
 
 ## Release notes
 
