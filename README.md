@@ -165,6 +165,7 @@ This example shows how to pass a [d3-geo projection](https://github.com/d3/d3-ge
 
 ## Release notes
 
+- 2.0.3: 18 Aug 2024. Security fix.
 - 2.0.2: 1 Nov 2023. Include README.md in npm package. Lint code before publishing.
 - 2.0.1: 31 Oct 2023. Re-license from AGPL 3.0 to MIT.
 - 2.0.0: 16 Jun 2023. Build as `gramex.cartogram()` instead of `cartogram.cartogram()`.

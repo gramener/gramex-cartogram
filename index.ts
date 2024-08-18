@@ -6,7 +6,7 @@ import "d3-transition";
 
 export function cartogram(
   element: SVGElement,
-  { width, height, layers = [], projection }: CartogramOptions,
+  { width, height, layers = [], projection }: CartogramOptions
 ): Cartogram {
   const el = select(element);
 
@@ -30,11 +30,10 @@ export function cartogram(
       const featureCollectionName = Object.keys(layer.data.objects)[0];
       const featureCollection = topojson.feature(
         layer.data,
-        featureCollectionName,
+        featureCollectionName
       ) as unknown as GeoJSON.FeatureCollection;
       // Filter if required
-      if (layer.filter)
-        featureCollection.features = featureCollection.features.filter(layer.filter);
+      if (layer.filter) featureCollection.features = featureCollection.features.filter(layer.filter);
       // Store converted TopoJSON features in each layer as .features
       layer.features = featureCollection.features;
     });
@@ -46,7 +45,10 @@ export function cartogram(
       .map((d) => d.features || [])
       .flat();
     if (features.length === 0) features = layers.map((d) => d.features || []).flat();
-    projection = projection.fitSize(size, { type: "FeatureCollection", features });
+    projection = projection.fitSize(size, {
+      type: "FeatureCollection",
+      features,
+    });
   }
 
   const path = geoPath();
@@ -75,12 +77,10 @@ const plugins = {
   choropleth: (selection: FeatureSelection, { path }) => selection.join("path").attr("d", path),
   cartogram: (selection: FeatureSelection, { path }) =>
     selection.join(
-      (enter) =>
-        enter.append("circle").call(moveToCentroid, { path }).attr("r", 5).attr("stroke", "#fff"),
-      (update) => update.call(moveToCentroid, { path }),
+      (enter) => enter.append("circle").call(moveToCentroid, { path }).attr("r", 5).attr("stroke", "#fff"),
+      (update) => update.call(moveToCentroid, { path })
     ),
-  centroid: (selection: FeatureSelection, { path }) =>
-    selection.join("g").call(moveToCentroid, { path }),
+  centroid: (selection: FeatureSelection, { path }) => selection.join("g").call(moveToCentroid, { path }),
 };
 
 function moveToCentroid(selection: FeatureSelection, { path }) {
